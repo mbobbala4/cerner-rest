@@ -2,8 +2,6 @@ package com.cerner.dao;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaQuery;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

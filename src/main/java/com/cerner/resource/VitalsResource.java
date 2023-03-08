@@ -34,11 +34,11 @@ import com.cerner.service.VitalService;
 public class VitalsResource {
 	VitalService vitalService = new VitalService();
 	
-	//@Context
-	//private javax.ws.rs.core.SecurityContext  securityContext;
+	
 
 	// CRUD -- CREATE operation
 	@POST
+	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "application/json", "application/xml" })
 
@@ -54,11 +54,6 @@ public class VitalsResource {
 
 	public Response getAllVitals() {
 		
-		/*if(! securityContext.isUserInRole("Admin")){
-				
-			throw new WebApplicationException("Not Authorised" , 401);
-		
-		} */
 		VitalsResponseDTO response =  new VitalsResponseDTO ();
 		List<Vitals> vList = vitalService.getAllVitals();
 		response.setResults(vList);
@@ -84,7 +79,7 @@ public class VitalsResource {
 	
 	
 	@PUT
-	@Path("/{id}")
+	@Path("/update/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateVitals(@PathParam("id") int id, Vitals v) {
@@ -98,13 +93,11 @@ public class VitalsResource {
 
 	// CRUD -- DELETE operation
 	@DELETE
-	@Path("/{id}")
+	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteVitals(@PathParam("id") Integer id) {
 		  int count = vitalService.deleteVital(id);
-		 if(count==0){
-		      return Response.status(Response.Status.BAD_REQUEST).build();
-		    }
+		
 		    return Response.ok().build();
 	}
 	
@@ -121,12 +114,6 @@ public class VitalsResource {
 			return Response.status(200).entity(response).build();
 	}
 
-	@GET
-	@Path("/recent")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Vitals getRecentData() {
-		Vitals vList = vitalService.recentData();
-		return vList;
-	}
+	
 
 }
