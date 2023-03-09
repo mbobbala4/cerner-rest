@@ -12,10 +12,35 @@ import com.cerner.model.Encounter;
 import com.cerner.model.Patient;
 import com.cerner.model.Vitals;
 
-public class VitalService {
+public class VitalsService {
 	VitalsDAO vitalDao = new VitalsDAO();
 	PatientDAO pDao = new PatientDAO();
 	EncounterDAO eDao = new EncounterDAO();
+	public VitalsDAO getVitalDao() {
+		return vitalDao;
+	}
+
+	public void setVitalDao(VitalsDAO vitalDao) {
+		this.vitalDao = vitalDao;
+	}
+
+	public PatientDAO getpDao() {
+		return pDao;
+	}
+
+	public void setpDao(PatientDAO pDao) {
+		this.pDao = pDao;
+	}
+
+	public EncounterDAO geteDao() {
+		return eDao;
+	}
+
+	public void seteDao(EncounterDAO eDao) {
+		this.eDao = eDao;
+	}
+
+	
 
 	public List<Vitals> getAllVitals() {
 		List<Vitals> vitalList = vitalDao.getAllVitals();
@@ -46,7 +71,7 @@ public class VitalService {
 			if (eList != null && eList.size() > 0) {
 				List<Pv> lstPv = vitalReqDTO.getPv();
 				Vitals v = new Vitals();
-				int encounter_Id = vitalDao.getEncounter(vitalReqDTO.getPatientId());
+				int encounter_Id = vitalReqDTO.getEncounterId() ; //vitalDao.getEncounter(vitalReqDTO.getPatientId());
 				for (Pv pv : lstPv) {
 
 					v.setPatient_Id(vitalReqDTO.getPatientId());

@@ -24,7 +24,7 @@ import com.cerner.dto.VitalsResponseDTO;
 //import com.cerner.dto.PVRequestDTO;
 
 import com.cerner.model.Vitals;
-import com.cerner.service.VitalService;
+import com.cerner.service.VitalsService;
 
 @Path("/vitals")
 //@Api("/patientInfo")
@@ -32,7 +32,7 @@ import com.cerner.service.VitalService;
 
 @Produces({ "application/json" })
 public class VitalsResource {
-	VitalService vitalService = new VitalService();
+	VitalsService vitalService = new VitalsService();
 	
 	
 
