@@ -6,11 +6,10 @@ import com.cerner.dao.EncounterDAO;
 import com.cerner.dao.PatientDAO;
 import com.cerner.dto.PatientRequestDTO;
 import com.cerner.dto.PatientResponseDTO;
-import com.cerner.dto.VitalsResponseDTO;
 import com.cerner.model.Patient;
 
 public class PatientService {
-	
+
 	PatientDAO pDao = new PatientDAO();
 	EncounterDAO eDao = new EncounterDAO();
 
@@ -26,43 +25,18 @@ public class PatientService {
 
 	public PatientResponseDTO createPatient(PatientRequestDTO patientReqDTO) {
 
-		// paitientId -- encounterid select * from encounter where patientId=
-		// ?PatientReqDTO.getPatientId()
-		// check for patientId
-		
 		PatientResponseDTO pvRes = new PatientResponseDTO();
-		
-		
 
-	
+		Patient p = new Patient();
 
-		
-				Patient p = new Patient();
-				
-				p.setAct_ind(1);
-				p.setAddress(patientReqDTO.getAddress());
-				p.setAge(patientReqDTO.getAge());
-				p.setDateOfBirth(patientReqDTO.getDateOfBirth());
-				p.setGender(patientReqDTO.getGender());
-				p.setName(patientReqDTO.getName());
-				//p.setFacility(patientReqDTO.);
-				
-			
-				/*	v.setEncounter_id(encounter_Id);
-					v.setValue(pv.getValue());
-					v.setPatient_name(pv.getName());
-					v.setUnitsOfMesurment(pv.getUom());
+		p.setAct_ind(1);
+		p.setAddress(patientReqDTO.getAddress());
+		p.setAge(patientReqDTO.getAge());
+		p.setDateOfBirth(patientReqDTO.getDateOfBirth());
+		p.setGender(patientReqDTO.getGender());
+		p.setName(patientReqDTO.getName());
 
-					pDao.createPatient(v);
-*/
-				
-			
-
-	/*	pvRes.setStatusCode("201");
-		pvRes.setStatusMessage("Created");
-		pvRes.setResponseMessages("All Patient created succesfully");*/
-		
-		return pvRes ;
+		return pvRes;
 	}
 
 	public Patient updatePatient(Patient Patient) {
@@ -75,7 +49,4 @@ public class PatientService {
 		return patientResponse;
 	}
 
-	
-
 }
-

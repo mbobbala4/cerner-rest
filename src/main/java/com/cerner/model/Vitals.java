@@ -14,13 +14,23 @@ import javax.persistence.Version;
 @Table(name = "Vitals")
 public class Vitals {
 
+	@Override
+	public String toString() {
+		return "Vitals [id=" + id + ", vital_name=" + vital_name + ", value=" + value + ", unitsOfMesurment="
+				+ unitsOfMesurment + ", patient_Id=" + patient_Id + ", encounter_id=" + encounter_id
+				+ ", updation_date=" + updation_date + ", update_count=" + update_count + ", act_ind=" + act_ind + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
 	private int id;
 
 	@Column(name = "Vital_Name")
 	private String vital_name;
+
+	public int getId() {
+		return id;
+	}
 
 	@Column(name = "Vital_Value")
 	private int value;

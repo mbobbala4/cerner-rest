@@ -16,6 +16,7 @@ public class VitalsService {
 	VitalsDAO vitalDao = new VitalsDAO();
 	PatientDAO pDao = new PatientDAO();
 	EncounterDAO eDao = new EncounterDAO();
+
 	public VitalsDAO getVitalDao() {
 		return vitalDao;
 	}
@@ -40,10 +41,11 @@ public class VitalsService {
 		this.eDao = eDao;
 	}
 
-	
-
 	public List<Vitals> getAllVitals() {
 		List<Vitals> vitalList = vitalDao.getAllVitals();
+		for(Vitals v : vitalList) {
+			System.out.println(v);
+		}
 		return vitalList;
 	}
 
@@ -54,13 +56,9 @@ public class VitalsService {
 
 	public VitalsResponseDTO createVital(VitalRequestDTO vitalReqDTO) {
 
-		// paitientId -- encounterid select * from encounter where patientId=
-		// ?vitalReqDTO.getPatientId()
-		// check for patientId
-		
-        VitalsResponseDTO pvRes = new VitalsResponseDTO();
-		
-		
+	
+
+		VitalsResponseDTO pvRes = new VitalsResponseDTO();
 
 		Patient p = pDao.getPatientForId(vitalReqDTO.getPatientId());
 
@@ -71,7 +69,7 @@ public class VitalsService {
 			if (eList != null && eList.size() > 0) {
 				List<Pv> lstPv = vitalReqDTO.getPv();
 				Vitals v = new Vitals();
-				int encounter_Id = vitalReqDTO.getEncounterId() ; //vitalDao.getEncounter(vitalReqDTO.getPatientId());
+				int encounter_Id = vitalReqDTO.getEncounterId(); // vitalDao.getEncounter(vitalReqDTO.getPatientId());
 				for (Pv pv : lstPv) {
 
 					v.setPatient_Id(vitalReqDTO.getPatientId());
@@ -84,42 +82,37 @@ public class VitalsService {
 
 				}
 			} else {
-				
-				
+
 				pvRes.setResponseMessages("Provided PatientId & EncounterId combination  doesn't exists in the system");
-				
+
 				return pvRes;
-			   }
-		} else {
-			
-			pvRes.setResponseMessages("Provided Patient Id doesn't exists in the system");
-			
-			return pvRes;
-			
 			}
+		} else {
 
-		
+			pvRes.setResponseMessages("Provided Patient Id doesn't exists in the system");
+
+			return pvRes;
+
+		}
+
 		pvRes.setResponseMessages("All vitals created succesfully");
-		
-		return pvRes ;
+
+		return pvRes;
 	}
-	
-	  public int updateVital(int id, Vitals v){
-		  
-		  
-		  int res =vitalDao.updateVital(id,v);
-		  
-		  return res;
-		  
-	  }
 
-	  
-	  public List<Vitals> getVitalsForPatientId(Integer patient_id) {
-		  
-		  List<Vitals> vitalList = vitalDao.getVitalsForPatientId(patient_id);
-		  return vitalList;
-	  }
+	public int updateVital(int id, Vitals v) {
 
+		int res = vitalDao.updateVital(id, v);
+
+		return res;
+
+	}
+
+	public List<Vitals> getVitalsForPatientId(Integer patient_id) {
+
+		List<Vitals> vitalList = vitalDao.getVitalsForPatientId(patient_id);
+		return vitalList;
+	}
 
 	public int deleteVital(Integer id) {
 		int res = vitalDao.deleteVital(id);

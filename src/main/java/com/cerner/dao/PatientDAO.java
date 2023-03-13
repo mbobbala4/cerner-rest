@@ -25,8 +25,6 @@ public class PatientDAO {
 
 		transaction.commit();
 		session.close();
-
-//		List<User> userList = new ArrayList<User>(usersMap.values());
 		return pList;
 	}
 

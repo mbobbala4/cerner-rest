@@ -145,11 +145,13 @@ public class VitalsServiceTest {
 		// MOCK ALERT: return mocked result set on find
 		when(dao.createVital(v)).thenReturn("Vitals Data Saved");
 		
+		
+		
 		// call the main method you want to test
 				VitalsResponseDTO result = service.createVital(vrDTO);
 
 		// MOCK ALERT: verify the method was called
-		//verify(dao).createVital(v);
+	//verify(dao).createVital(v);
 
 	}
 }
