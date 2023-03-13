@@ -14,6 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
+import org.apache.log4j.Logger;
+
 import com.cerner.dto.VitalRequestDTO;
 import com.cerner.dto.VitalsResponseDTO;
 
@@ -29,6 +32,9 @@ import com.cerner.service.VitalsService;
 @Produces({ "application/json" })
 public class VitalsResource {
 	VitalsService vitalService = new VitalsService();
+	 //private static Logger logger = LoggerFactory.getLogger(VitalsResource.class);
+	
+	final static Logger logger = Logger.getLogger(VitalsResource.class);
 
 	// CRUD -- CREATE operation
 	@POST
@@ -36,7 +42,9 @@ public class VitalsResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "application/json", "application/xml" })
 	public Response createVital(VitalRequestDTO vitalReqDTO) {
+		logger.info("Create Vital Request DTO : Start " +vitalReqDTO);
 		VitalsResponseDTO response = vitalService.createVital(vitalReqDTO);
+		logger.info("Create Vital  end " );
 		return Response.status(201).entity(response).build();
 	}
 
@@ -45,6 +53,7 @@ public class VitalsResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response getAllVitals() {
+		logger.info("getAllVitals : Start ");
 
 		VitalsResponseDTO response = new VitalsResponseDTO();
 		List<Vitals> vList = vitalService.getAllVitals();
@@ -54,6 +63,8 @@ public class VitalsResource {
 		} else {
 			response.setResponseMessages("No Results Found Vitals");
 		}
+		
+		logger.info("getAllVitals : End ");
 		return Response.status(200).entity(response).build();
 	}
 
@@ -62,6 +73,8 @@ public class VitalsResource {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getVitalsForId(@PathParam("id") Integer id) {
+		
+		logger.info("getVitalsForId Integer id :" + id + " Start ");
 
 		VitalsResponseDTO response = new VitalsResponseDTO();
 		Vitals v = vitalService.getVitalForId(id);
@@ -73,6 +86,8 @@ public class VitalsResource {
 		} else {
 			response.setResponseMessages("No Results Found Vitals for vital id :" + id);
 		}
+		
+		logger.info("getVitalsForId Integer id :" + id + " End ");
 		return Response.status(200).entity(response).build();
 
 	}
@@ -82,12 +97,15 @@ public class VitalsResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateVitals(@PathParam("id") int id, Vitals v) {
+		
+		logger.info("updateVitals for id :" + id + " Vitals v :" + v + " Start ");
 		VitalsResponseDTO response = new VitalsResponseDTO();
 		int count = vitalService.updateVital(id, v);
 		if (count <= 0) {
 			response.setResponseMessages("Update failed . Vitals for vital id : " + id
 					+ " doesn't exists or might have been deleted already.");
 			;
+			
 			return Response.status(Response.Status.BAD_REQUEST).entity(response).build();
 
 		}
@@ -99,6 +117,7 @@ public class VitalsResource {
 
 		response.setResponseMessages("Vitals Updated Successfully for vital id : " + id);
 		response.setResults(vList);
+		logger.info("updateVitals for id :" + id + " Vitals v :" + v + " End ");
 		return Response.ok().entity(response).build();
 	}
 
@@ -107,6 +126,7 @@ public class VitalsResource {
 	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteVitals(@PathParam("id") Integer id) {
+		logger.info("deleteVitals for id :" + id + " Start ");
 		int count = vitalService.deleteVital(id);
 		VitalsResponseDTO response = new VitalsResponseDTO();
 		if (count == 0) {
@@ -117,7 +137,7 @@ public class VitalsResource {
 		}
 
 		response.setResponseMessages("Vitals deleted Successfully for vital id : " + id);
-
+		logger.info("deleteVitals for id :" + id + " End ");
 		return Response.ok().entity(response).build();
 
 	}
@@ -127,11 +147,13 @@ public class VitalsResource {
 	@Path("/patient/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getVitalsForPatientId(@PathParam("id") int patientId) {
+		logger.info("getVitalsForPatientId  patientid :" + patientId + " Start ");
 
 		VitalsResponseDTO response = new VitalsResponseDTO();
 		List<Vitals> vList = vitalService.getVitalsForPatientId(patientId);
 		response.setResults(vList);
 		response.setResponseMessages("All Vitals retrieved Successfully for patient id :"+patientId);
+		logger.info("getVitalsForPatientId  patientid :" + patientId + " End ");
 		return Response.status(200).entity(response).build();
 	}
 

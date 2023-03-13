@@ -21,6 +21,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @Generated("jsonschema2pojo")
 public class VitalRequestDTO {
 	
+	@Override
+	public String toString() {
+		return "VitalRequestDTO [patientId=" + patientId + ", encounterId=" + encounterId + ", pv=" + pv
+				+ ", additionalProperties=" + additionalProperties + "]";
+	}
+
 	public VitalRequestDTO() {
 		super();
 		// TODO Auto-generated constructor stub

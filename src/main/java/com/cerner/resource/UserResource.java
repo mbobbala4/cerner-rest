@@ -12,6 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.log4j.Logger;
+
 import com.cerner.model.User;
 import com.cerner.service.UserService;
 
@@ -22,13 +24,15 @@ import com.cerner.service.UserService;
 //@SwaggerDefinition(tags={@Tag(name="userInfo",description="REST EndPoint for userInfo")})
 public class UserResource {
 	UserService userService = new UserService();
-
+	final static Logger logger = Logger.getLogger(UserResource.class);
 	// CRUD -- CREATE operation
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public User createUser(User user) {
+		
 		User userResponse = userService.createUser(user);
+		
 		return userResponse;
 	}
 

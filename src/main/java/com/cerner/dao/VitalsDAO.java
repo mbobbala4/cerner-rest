@@ -3,18 +3,22 @@ package com.cerner.dao;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.cerner.model.Encounter;
 import com.cerner.model.Vitals;
+import com.cerner.resource.VitalsResource;
 import com.cerner.util.SessionUtil;
 
 
 public class VitalsDAO {
-
+	final static Logger logger = Logger.getLogger(VitalsDAO.class);
+	
 	public List<Vitals> getAllVitals() {
+		logger.info("getAllVitals: Start ");
 		Session session = SessionUtil.getSession();
 		Transaction transaction = session.beginTransaction();
 
@@ -25,11 +29,12 @@ public class VitalsDAO {
 		transaction.commit();
 		session.close();
 
-		
+		logger.info("getAllVitals: End ");
 		return list;
 	}
 
 	public Vitals getVitalForId(Integer id) {
+		logger.info("getVitalForId for id :" + id + " Start ");
 		Session session = SessionUtil.getSession();
 
 		Query<Vitals> query = session.createQuery("from Vitals v where v.act_ind =1 and v.id =:id");
@@ -44,11 +49,12 @@ public class VitalsDAO {
 		}
 
 		session.close();
-
+		logger.info("getVitalForId for id :" + id + " End ");
 		return null;
 	}
 
 	public String createVital(Vitals vital) {
+		logger.info("createVital for vital :" + vital + " Start ");
 
 		Session session = SessionUtil.getSession();
 		Transaction transaction = session.beginTransaction();
@@ -60,11 +66,12 @@ public class VitalsDAO {
 
 		transaction.commit();
 		session.close();
-
+		logger.info("createVital for vital :" + vital + " End ");
 		return "Vitals Data saved ";
 	}
 
 	public int updateVital(int id, Vitals v) {
+		logger.info("updateVital for id :" + id + " Vitals v :" + v + " Start ");
 		int rowCount = 0;
 		if (id <= 0)
 			return 0;
@@ -99,11 +106,13 @@ public class VitalsDAO {
 				return -1;
 			}
 		}
+		logger.info("updateVital for id :" + id + " Vitals v :" + v + " End ");
 		return rowCount;
 
 	}
 
 	public int deleteVital(Integer id) {
+		logger.info("deleteVital for id :" + id + " Start ");
 		Session session = SessionUtil.getSession();
 		Transaction tx = session.beginTransaction();
 		String hql = "update Vitals set act_ind = 0 where act_ind = 1  and id = :id";
@@ -114,10 +123,12 @@ public class VitalsDAO {
 		System.out.println("Rows affected: " + rowCount);
 		tx.commit();
 		session.close();
+		logger.info("deleteVital for id :" + id + " End ");
 		return rowCount;
 	}
 
 	public Vitals recentData() {
+		logger.info("recentData: Start ");
 		Session session = SessionUtil.getSession();
 		Transaction transaction = session.beginTransaction();
 
@@ -134,11 +145,12 @@ public class VitalsDAO {
 
 		transaction.commit();
 		session.close();
-
+		logger.info("recentData: End ");
 		return patient;
 	}
 
 	public int getEncounter(int id) {
+		logger.info("getEncounter for id :" + id + " Start ");
 
 		Session session = SessionUtil.getSession();
 
@@ -147,11 +159,12 @@ public class VitalsDAO {
 		int encounter_Id = encounter.getId();
 
 		session.close();
-
+		logger.info("getEncounter for id :" + id + " End ");
 		return encounter_Id;
 	}
 
 	public List<Vitals> getVitalsForPatientId(Integer patient_id) {
+		logger.info("getVitalsForPatientId for patient_id :" + patient_id + " Start ");
 		Session session = SessionUtil.getSession();
 		Transaction transaction = session.beginTransaction();
 
@@ -162,7 +175,7 @@ public class VitalsDAO {
 
 		transaction.commit();
 		session.close();
-
+		logger.info("getVitalsForPatientId for patient_id :" + patient_id + " End ");
 		return list;
 	}
 

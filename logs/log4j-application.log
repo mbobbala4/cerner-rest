@@ -1,0 +1,46 @@
+2023-03-13 10:28:48 INFO  Version:44 - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-03-13 10:28:49 INFO  Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-13 10:28:49 WARN  pooling:75 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2023-03-13 10:28:49 INFO  pooling:119 - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/cerner]
+2023-03-13 10:28:49 INFO  pooling:128 - HHH10001001: Connection properties: {password=****, user=postgres}
+2023-03-13 10:28:49 INFO  pooling:132 - HHH10001003: Autocommit mode: false
+2023-03-13 10:28:49 INFO  DriverManagerConnectionProviderImpl:322 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2023-03-13 10:28:49 INFO  Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-03-13 10:28:50 INFO  PojoInstantiator:47 - HHH000182: No default (no-argument) constructor for class: com.cerner.model.Facility (class must be instantiated by Interceptor)
+2023-03-13 10:28:50 INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@729098a4] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2023-03-13 10:28:50 INFO  JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-13 10:28:50 INFO  VitalsResource:45 - Create Vital Request DTO : com.cerner.dto.VitalRequestDTO@41612d7c
+2023-03-13 11:35:55 INFO  Version:44 - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-03-13 11:35:55 INFO  Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-13 11:35:55 WARN  pooling:75 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2023-03-13 11:35:55 INFO  pooling:119 - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/cerner]
+2023-03-13 11:35:55 INFO  pooling:128 - HHH10001001: Connection properties: {password=****, user=postgres}
+2023-03-13 11:35:55 INFO  pooling:132 - HHH10001003: Autocommit mode: false
+2023-03-13 11:35:55 INFO  DriverManagerConnectionProviderImpl:322 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2023-03-13 11:35:55 INFO  Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-03-13 11:35:56 INFO  PojoInstantiator:47 - HHH000182: No default (no-argument) constructor for class: com.cerner.model.Facility (class must be instantiated by Interceptor)
+2023-03-13 11:35:56 INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@21cc0f22] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2023-03-13 11:35:56 INFO  JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-13 11:35:57 INFO  VitalsResource:56 - getAllVitals : Start 
+2023-03-13 11:35:57 INFO  VitalsService:49 - getAllVitals start
+2023-03-13 11:35:57 INFO  VitalsResource:21 - getAllVitals: Start 
+2023-03-13 11:35:57 INFO  VitalsResource:32 - getAllVitals: End 
+2023-03-13 11:35:57 INFO  VitalsService:51 - getAllVitals end
+2023-03-13 11:35:57 INFO  VitalsResource:67 - getAllVitals : End 
+2023-03-13 11:38:41 INFO  Version:44 - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-03-13 11:38:41 INFO  Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-13 11:38:42 WARN  pooling:75 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2023-03-13 11:38:42 INFO  pooling:119 - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/cerner]
+2023-03-13 11:38:42 INFO  pooling:128 - HHH10001001: Connection properties: {password=****, user=postgres}
+2023-03-13 11:38:42 INFO  pooling:132 - HHH10001003: Autocommit mode: false
+2023-03-13 11:38:42 INFO  DriverManagerConnectionProviderImpl:322 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2023-03-13 11:38:42 INFO  Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-03-13 11:38:42 INFO  PojoInstantiator:47 - HHH000182: No default (no-argument) constructor for class: com.cerner.model.Facility (class must be instantiated by Interceptor)
+2023-03-13 11:38:42 INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1afc1803] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2023-03-13 11:38:42 INFO  JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-13 11:38:42 INFO  VitalsResource:56 - getAllVitals : Start 
+2023-03-13 11:38:42 INFO  VitalsService:49 - getAllVitals start
+2023-03-13 11:38:42 INFO  VitalsDAO:21 - getAllVitals: Start 
+2023-03-13 11:38:42 INFO  VitalsDAO:32 - getAllVitals: End 
+2023-03-13 11:38:42 INFO  VitalsService:51 - getAllVitals end
+2023-03-13 11:38:42 INFO  VitalsResource:67 - getAllVitals : End 

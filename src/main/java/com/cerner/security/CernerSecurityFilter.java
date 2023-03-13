@@ -24,7 +24,6 @@ public class CernerSecurityFilter implements ContainerRequestFilter {
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
-		// TODO Auto-generated method stub
 		
 		List<String> authHeader = requestContext.getHeaders().get(AUTHORIZATION_HEADER_KEY);
 		if(authHeader!=null && authHeader.size() > 0){
